@@ -15,7 +15,7 @@ public class CowTimer {
 
 	public static void main(String[] args) throws InterruptedException {
 		/* 1. Make a CowTimer, set the time and start it. */
-
+Cowtimer timer=new Cowtimer(int, String);
 	}
 
 	private int minutes;
@@ -32,7 +32,7 @@ public class CowTimer {
 		 */
 
 		/*
-		 * 3. When the timer is finished, use the playSound method to play a moo sound.
+		 * 3. When the timer is finished, use the JLabel labelplaySound method to play a moo sound.
 		 * You can use the .wav file in the default package, or you can download one
 		 * from freesound.org, then drag it intothe default package.
 		 */
