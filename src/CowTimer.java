@@ -6,6 +6,7 @@
 import java.applet.AudioClip;
 import java.io.IOException;
 import javax.swing.JApplet;
+import javax.swing.JLabel;
 
 public class CowTimer {
 	/*
@@ -15,7 +16,12 @@ public class CowTimer {
 
 	public static void main(String[] args) throws InterruptedException {
 		/* 1. Make a CowTimer, set the time and start it. */
-Cowtimer timer=new Cowtimer(int, String);
+CowTimer timer=new CowTimer();
+timer.setTime(5);
+timer.start();
+
+
+
 	}
 
 	private int minutes;
@@ -30,12 +36,20 @@ Cowtimer timer=new Cowtimer(int, String);
 		 * 2. Count down the minutes, print the current minute then sleep for 60 seconds
 		 * using Thread.sleep(int milliseconds).
 		 */
-
+for(int i=minutes;i>0;i--) {
+System.out.println(i);
+Thread.sleep(1000);
+}
+		
+		
 		/*
 		 * 3. When the timer is finished, use the JLabel labelplaySound method to play a moo sound.
 		 * You can use the .wav file in the default package, or you can download one
 		 * from freesound.org, then drag it intothe default package.
 		 */
+		JLabel label=new JLabel();
+		playSound("moo.wav");
+		
 
 	}
 
