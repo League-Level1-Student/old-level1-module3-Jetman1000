@@ -45,30 +45,33 @@ public class SimonSays extends KeyAdapter {
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-
+		 int score=0;
+int points=score;
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-		
+		if(keyCode==ImageIndex) {
 			// 17. Increase the value of score
-		
+		score++;
 			// 18. Use the speak method to tell the user they were correct
-		
+		speak("You are correct!");
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't say..."
-		
+		}else {
 			// 20.  Increase the value of score
-		
+		score++;
 			// 21. Use the speak method to tell the user they were correct
-		
+		speak("You are correct!");
+		}
 		// 22. Increment tries by 1
-		
+		tries++;
 		// 25. If tries is greater than 9 (or however many you want)...
-		
+		if(tries>5) {
 			// 26. Tell the user their score
-		
+		JOptionPane.showMessageDialog("Your score is "+score);
 			// 27. Exit the program
-
+		System.exit(tries);}
 		// 23. Dispose of the frame
-
-		// 24. Call the showImage method to show a new image
+frame.dispose();
+// 24. Call the showImage method to show a new image
+		showImage();
 	}
 
 	private void showImage() {
@@ -88,14 +91,20 @@ frame.setName("Simon");
 		// 11. Add a key listener to the frame
 frame.addKeyListener(null);
 		// 12. Create a new instance of Random
-
+	
+Random r=new Random();
 		// 13. Use the Random and the speak method to either say 
 		// "Simon says press this key" or "Press this key"
-
+int i=r.nextInt(2);
+if(i==1) {
+speak("Simon says press this key");
+}else {
+	speak("Press this key");
+}
 		// 14. Above, set the value of simonSays to true/false appropriately
-
-		
-	}
+simonSays=true;
+//simonSays=false;
+}
 
 	private Component getNextRandomImage() {
 		this.imageIndex = new Random().nextInt(4) + 37;
