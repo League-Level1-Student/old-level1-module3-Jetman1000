@@ -28,7 +28,7 @@ public class SimonSays extends KeyAdapter {
 	private int tries = 0;
 	private boolean simonSays = false;
 	Date timeAtStart;
-
+	int points=0;
 	private void makeAlbum() {
 		// 2. Add the four images that match keyboard keys like this: 
 		images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
@@ -44,36 +44,41 @@ public class SimonSays extends KeyAdapter {
 	}
 
 	public void keyPressed(KeyEvent e) {
+		
 		// 15. Make a points variable to track the score.
-		 int score=0;
-int points=score;
+		 
+
+System.out.println(points);
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-		if(keyCode==ImageIndex) {
+		if( simonSays==true && e.getKeyCode()==imageIndex) {
 			// 17. Increase the value of score
-		score++;
+		points++;
 			// 18. Use the speak method to tell the user they were correct
 		speak("You are correct!");
+		}
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't say..."
-		}else {
+		else if(simonSays==false && e.getKeyCode()!=imageIndex) {
 			// 20.  Increase the value of score
-		score++;
+		points++;
 			// 21. Use the speak method to tell the user they were correct
 		speak("You are correct!");
+		}else {
+		speak("You are incorrect!");
 		}
 		// 22. Increment tries by 1
 		tries++;
 		// 25. If tries is greater than 9 (or however many you want)...
-		if(tries>5) {
+		if(tries>2) {
 			// 26. Tell the user their score
-		JOptionPane.showMessageDialog("Your score is "+score);
+		JOptionPane.showMessageDialog(null, "Your score is "+points);
 			// 27. Exit the program
 		System.exit(tries);}
 		// 23. Dispose of the frame
 frame.dispose();
+
 // 24. Call the showImage method to show a new image
 		showImage();
 	}
-
 	private void showImage() {
 		// 5. Initialize your frame to a new JFrame()
 		frame =new JFrame();
@@ -89,21 +94,25 @@ frame.setName("Simon");
 		// 10. Set the defaultCloseOperation of your from to JFrame.EXIT_ON_CLOSE
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 11. Add a key listener to the frame
-frame.addKeyListener(null);
+frame.addKeyListener(this);
 		// 12. Create a new instance of Random
-	
+
 Random r=new Random();
 		// 13. Use the Random and the speak method to either say 
 		// "Simon says press this key" or "Press this key"
+String right ="Simon says press this key";
+String wrong="Press this key";
 int i=r.nextInt(2);
 if(i==1) {
-speak("Simon says press this key");
+	simonSays=true;
+speak(right);
 }else {
-	speak("Press this key");
+	speak(wrong);
+	simonSays=false;
 }
 		// 14. Above, set the value of simonSays to true/false appropriately
-simonSays=true;
-//simonSays=false;
+
+
 }
 
 	private Component getNextRandomImage() {
